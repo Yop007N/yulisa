@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Feliz Cumpleaños, Aylén Yulisa Villalba Wessely!</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="book">
+        <div class="page active" id="page1">
+            <h1 class="display-4">¡Feliz Cumpleaños, Aylén!</h1>
+            <p class="lead">Hoy celebramos a una personita increíble que irradia luz y positividad. ¡Feliz 20 años!</p>
+            <div id="countdown"></div>
+            <button class="btn btn-primary next-button" onclick="nextPage()">Siguiente</button>
+        </div>
+        <div class="page" id="page2">
+            <p class="mt-3">Querida Aylén, en tu día especial quiero desearte todo lo mejor. Eres una persona maravillosa y una artista talentosa. ¡Que todos tus sueños se hagan realidad!</p>
+            <p>Tu capacidad para crear conexiones profundas con quienes te rodean es asombrosa. Tu personalidad comunicativa y abierta ilumina cualquier interacción, y tu bondad y carisma son simplemente incomparables.</p>
+            <p>Una fuente constante de inspiración. Tu dedicación a la música y a tus estudios de Psicopedagogía demuestra tu inteligencia y pasión. ¡Sigue brillando con esa luz que te caracteriza!</p>
+            <button class="btn btn-primary next-button" onclick="nextPage()">Siguiente</button>
+        </div>
+        <div class="page" id="page3">
+            <p>Tienes una personalidad comunicativa y abierta que destaca en cualquier interacción. Tu bondad y carisma te hacen única, y tu pasión por la música inspira a todos a tu alrededor.</p>
+            <p>Tu actitud alegre y tu sonrisa genuina tienen el poder de mejorar cualquier día. Tratas a todos con empatía y respeto, y enfrentas desafíos con una fortaleza admirable. Tienes claras tus metas y ambiciones, especialmente en música y psicopedagogía, lo que demuestra tu deseo de crecer y evolucionar.</p>
+            <button class="btn btn-primary next-button" onclick="nextPage()">Siguiente</button>
+        </div>
+        <div class="page" id="page4">
+            <p>Tu presencia en la vida de quienes te rodean es un verdadero regalo. Sabes escuchar y brindar apoyo incondicional.</p>
+            <p>Tu habilidad para ver lo mejor en las personas y situaciones difíciles es una inspiración para todos. No solo eres talentosa, sino también increíblemente generosa.</p>
+            <p>Espero que este año nuevo de vida te traiga tantas alegrías como las que tú brindas a diario. ¡Feliz cumpleaños!</p>
+            <p>Con mucho cariño, Enrique</p>
+            <button class="btn btn-primary next-button" onclick="nextPage()">Siguiente</button>
+        </div>
+        <div class="page" id="page5">
+            <p>Vamos a jugar un pequeño juego de memoria para hacer este día aún más especial. Encuentra las parejas correctas para ganar .</p>
+            <div id="game">
+                <!-- Cards will be dynamically generated here -->
+            </div>
+            <button class="btn btn-primary next-button" onclick="startGame()">Comenzar el juego</button>
+            <button class="btn btn-primary next-button" onclick="nextPage()">Volver al inicio</button>
+        </div>
+    </div>
+
+    <!-- Reproductor de música de fondo -->
+    <audio id="pianoMusic" autoplay loop>
+        <source src="assets/audio/piano.mp3" type="audio/mpeg">
+        Tu navegador no soporta la reproducción de audio.
+    </audio>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
