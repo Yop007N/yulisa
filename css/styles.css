@@ -19,15 +19,16 @@ body {
     overflow: hidden;
 }
 .book {
-    width: 1000px;
-    height: 800px;
+    width: 90%;
+    max-width: 1000px;
+    height: 80vh;
     margin: 50px auto;
     position: relative;
 }
 .page {
     width: 100%;
     height: 100%;
-    padding: 40px;
+    padding: 20px;
     background-color: rgba(255, 255, 255, 0.9);
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
@@ -45,15 +46,15 @@ body {
 .page h1, .page p {
     margin: 20px 0;
     animation: fadeIn 5s ease-in-out, float 6s ease-in-out infinite;
-    font-size: 2em;
+    font-size: 1.5em;
 }
 .page h1 {
     color: #ff1500;
     animation: fadeIn 3s ease-in-out, float 6s ease-in-out infinite;
-    font-size: 3em;
+    font-size: 2em;
 }
 #countdown {
-    font-size: 2em;
+    font-size: 1.5em;
     margin-top: 20px;
     animation: fadeIn 3s ease-in-out;
 }
@@ -61,7 +62,7 @@ body {
     margin-top: 20px;
     background-color: #ff6f61;
     border-color: #ff6f61;
-    font-size: 1.5em;
+    font-size: 1.2em;
 }
 .next-button:hover {
     background-color: #ff3b2e;
@@ -74,10 +75,10 @@ body {
     margin-top: 20px;
 }
 .game-card {
-    width: 150px;
-    height: 150px;
-    margin: 10px;
-    font-size: 1.5em;
+    width: 100px;
+    height: 100px;
+    margin: 5px;
+    font-size: 1em;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -90,4 +91,24 @@ body {
     background-color: #fff;
     color: #ff3b2e;
     cursor: default;
+}
+
+@media (min-width: 768px) {
+    .page h1 {
+        font-size: 3em;
+    }
+    .page p {
+        font-size: 2em;
+    }
+    #countdown {
+        font-size: 2em;
+    }
+    .next-button {
+        font-size: 1.5em;
+    }
+    .game-card {
+        width: 150px;
+        height: 150px;
+        font-size: 1.5em;
+    }
 }
