@@ -21,13 +21,12 @@ body {
 .book {
     width: 90%;
     max-width: 1000px;
-    height: 80vh;
+    height: auto;
     margin: 50px auto;
     position: relative;
 }
 .page {
     width: 100%;
-    height: 100%;
     padding: 20px;
     background-color: rgba(255, 255, 255, 0.9);
     border-radius: 10px;
@@ -51,20 +50,29 @@ body {
 .page h1 {
     color: #ff1500;
     animation: fadeIn 3s ease-in-out, float 6s ease-in-out infinite;
-    font-size: 2em;
+    font-size: 2.5em;
 }
 #countdown {
     font-size: 1.5em;
     margin-top: 20px;
     animation: fadeIn 3s ease-in-out;
 }
-.next-button {
-    margin-top: 20px;
+.fixed-buttons {
+    position: fixed;
+    bottom: 70px; /* Ajuste la distancia desde el borde inferior */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    z-index: 1000;
+}
+.next-button, .play-button {
     background-color: #ff6f61;
     border-color: #ff6f61;
     font-size: 1.2em;
 }
-.next-button:hover {
+.next-button:hover, .play-button:hover {
     background-color: #ff3b2e;
     border-color: #ff3b2e;
 }
@@ -77,7 +85,7 @@ body {
 .game-card {
     width: 100px;
     height: 100px;
-    margin: 5px;
+    margin: 10px;
     font-size: 1em;
     display: flex;
     justify-content: center;
@@ -93,22 +101,43 @@ body {
     cursor: default;
 }
 
-@media (min-width: 768px) {
-    .page h1 {
-        font-size: 3em;
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    .page h1, .page p {
+        font-size: 1.2em;
     }
-    .page p {
+    .page h1 {
         font-size: 2em;
     }
     #countdown {
-        font-size: 2em;
+        font-size: 1.2em;
     }
-    .next-button {
-        font-size: 1.5em;
+    .next-button, .play-button {
+        font-size: 1em;
     }
     .game-card {
-        width: 150px;
-        height: 150px;
+        width: 80px;
+        height: 80px;
+        font-size: 0.8em;
+    }
+}
+
+@media (max-width: 480px) {
+    .page h1, .page p {
+        font-size: 1em;
+    }
+    .page h1 {
         font-size: 1.5em;
+    }
+    #countdown {
+        font-size: 1em;
+    }
+    .next-button, .play-button {
+        font-size: 0.8em;
+    }
+    .game-card {
+        width: 60px;
+        height: 60px;
+        font-size: 0.6em;
     }
 }

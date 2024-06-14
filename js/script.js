@@ -2,6 +2,7 @@ AOS.init();
 
 let currentPage = 1;
 const totalPages = 5;
+const pianoMusic = document.getElementById('pianoMusic');
 
 function nextPage() {
     lanzarConfeti();
@@ -120,10 +121,18 @@ function lanzarConfeti() {
     }, 250);
 }
 
+function togglePlay() {
+    if (pianoMusic.paused) {
+        pianoMusic.play();
+    } else {
+        pianoMusic.pause();
+    }
+}
+
 window.onload = function() {
     lanzarConfeti();
     setTimeout(lanzarConfeti, 10000);
-    document.getElementById('pianoMusic').play();
+    pianoMusic.play();
 };
 
 function countdown() {

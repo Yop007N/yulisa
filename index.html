@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>¡Feliz Cumpleaños, Aylén Yulisa Villalba Wessely!</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
@@ -14,38 +14,39 @@
             <h1 class="display-4">¡Feliz Cumpleaños, Aylén!</h1>
             <p class="lead">Hoy celebramos a una personita increíble que irradia luz y positividad. ¡Feliz 20 años!</p>
             <div id="countdown"></div>
-            <button class="btn btn-primary next-button" onclick="nextPage()">Siguiente</button>
         </div>
         <div class="page" id="page2">
             <p class="mt-3">Querida Aylén, en tu día especial quiero desearte todo lo mejor. Eres una persona maravillosa y una artista talentosa. ¡Que todos tus sueños se hagan realidad!</p>
             <p>Tu capacidad para crear conexiones profundas con quienes te rodean es asombrosa. Tu personalidad comunicativa y abierta ilumina cualquier interacción, y tu bondad y carisma son simplemente incomparables.</p>
             <p>Una fuente constante de inspiración. Tu dedicación a la música y a tus estudios de Psicopedagogía demuestra tu inteligencia y pasión. ¡Sigue brillando con esa luz que te caracteriza!</p>
-            <button class="btn btn-primary next-button" onclick="nextPage()">Siguiente</button>
         </div>
         <div class="page" id="page3">
             <p>Tienes una personalidad comunicativa y abierta que destaca en cualquier interacción. Tu bondad y carisma te hacen única, y tu pasión por la música inspira a todos a tu alrededor.</p>
             <p>Tu actitud alegre y tu sonrisa genuina tienen el poder de mejorar cualquier día. Tratas a todos con empatía y respeto, y enfrentas desafíos con una fortaleza admirable. Tienes claras tus metas y ambiciones, especialmente en música y psicopedagogía, lo que demuestra tu deseo de crecer y evolucionar.</p>
-            <button class="btn btn-primary next-button" onclick="nextPage()">Siguiente</button>
         </div>
         <div class="page" id="page4">
             <p>Tu presencia en la vida de quienes te rodean es un verdadero regalo. Sabes escuchar y brindar apoyo incondicional.</p>
             <p>Tu habilidad para ver lo mejor en las personas y situaciones difíciles es una inspiración para todos. No solo eres talentosa, sino también increíblemente generosa.</p>
             <p>Espero que este año nuevo de vida te traiga tantas alegrías como las que tú brindas a diario. ¡Feliz cumpleaños!</p>
             <p>Con mucho cariño, Enrique</p>
-            <button class="btn btn-primary next-button" onclick="nextPage()">Siguiente</button>
         </div>
         <div class="page" id="page5">
-            <p>Vamos a jugar un pequeño juego de memoria para hacer este día aún más especial. Encuentra las parejas correctas para ganar .</p>
+            <p>Vamos a jugar un pequeño juego de memoria para hacer este día aún más especial. Encuentra las parejas correctas para ganar.</p>
             <div id="game">
-                <!-- Cards will be dynamically generated here -->
+                <!-- Las cartas se generarán dinámicamente aquí -->
             </div>
-            <button class="btn btn-primary next-button" onclick="startGame()">Comenzar el juego</button>
-            <button class="btn btn-primary next-button" onclick="nextPage()">Volver al inicio</button>
+            <button class="btn btn-primary start-game-button" onclick="startGame()">Jugar</button>
         </div>
     </div>
 
+    <!-- Contenedor de botones fijos -->
+    <div class="fixed-buttons">
+        <button class="btn btn-primary next-button" onclick="nextPage()">Siguiente</button>
+        <button class="btn btn-success play-button" onclick="togglePlay()">Reproducir/Pausar Música</button>
+    </div>
+
     <!-- Reproductor de música de fondo -->
-    <audio id="pianoMusic" autoplay loop>
+    <audio id="pianoMusic" loop>
         <source src="assets/audio/piano.mp3" type="audio/mpeg">
         Tu navegador no soporta la reproducción de audio.
     </audio>
