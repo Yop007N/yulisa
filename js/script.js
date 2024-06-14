@@ -17,8 +17,16 @@ function nextPage() {
 
 function startGame() {
     document.getElementById('game').style.display = 'flex';
-    document.querySelector('.next-button').style.display = 'none';
+    document.querySelector('.start-game-button').style.display = 'none';
     generateCards();
+}
+
+function goToStart() {
+    currentPage = 1;
+    document.querySelectorAll('.page').forEach((page, index) => {
+        page.classList.remove('active');
+        if (index === 0) page.classList.add('active');
+    });
 }
 
 function generateCards() {
