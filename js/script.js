@@ -141,19 +141,28 @@ window.onload = function() {
     lanzarConfeti();
     setTimeout(lanzarConfeti, 10000);
     pianoMusic.play();
+    updateBirthdayMessage();
+    countdown();
 };
 
 function countdown() {
-    const countDownDate = new Date("Jun 16, 2024 00:00:00").getTime();
-    const now = new Date().getTime();
-    const distance = countDownDate - now;
+    const now = new Date();
+    const birthDate = new Date("Jun 16, 2004");
+    const currentYear = now.getFullYear();
+    let nextBirthday = new Date(currentYear, birthDate.getMonth(), birthDate.getDate());
+
+    if (now > nextBirthday) {
+        nextBirthday.setFullYear(currentYear + 1);
+    }
+
+    const distance = nextBirthday - now;
 
     const days = Math.floor(distance / (1000 * 60 * 60 * 24));
     const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    document.getElementById("countdown").innerHTML = `Tiempo restante para tu cumpleaños: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+    document.getElementById("countdown").innerHTML = `El próximo cumpleaños será en: ${days} días ${hours} horas ${minutes} minutos ${seconds} segundos`;
 
     if (distance < 0) {
         clearInterval(x);
@@ -162,3 +171,139 @@ function countdown() {
 }
 
 const x = setInterval(countdown, 1000);
+
+function updateBirthdayMessage() {
+    const now = new Date();
+    const birthDate = new Date("Jun 16, 2004");
+    const currentYear = now.getFullYear();
+    let nextBirthday = new Date(currentYear, birthDate.getMonth(), birthDate.getDate());
+
+    if (now > nextBirthday) {
+        nextBirthday.setFullYear(currentYear + 1);
+    }
+
+    const age = currentYear - birthDate.getFullYear();
+    document.getElementById('birthdayMessage').innerText = "Próximo cumpleaños de Aylén";
+   // document.getElementById('birthdayInfo').innerText = `Tu próximo cumpleaños será el ${nextBirthday.toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' })}. Aylén cumplirá ${age + 1} años.`;
+}
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Mostrar cuenta regresiva
+    updateCountdown();
+
+    // Mostrar frase del día
+    showFraseDiaria();
+});
+
+function updateCountdown() {
+    const targetDate = new Date('2025-06-16T00:00:00');
+    setInterval(() => {
+        const now = new Date();
+        const timeRemaining = targetDate - now;
+
+        const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+
+        document.getElementById('time').innerText = `${days} días ${hours} horas ${minutes} minutos ${seconds} segundos`;
+    }, 1000);
+}
+
+function showFraseDiaria() {
+    const now = new Date();
+    const start = new Date(now.getFullYear(), 0, 0);
+    const diff = now - start;
+    const oneDay = 1000 * 60 * 60 * 24;
+    const dayOfYear = Math.floor(diff / oneDay);
+
+    const fraseDiaria = frases[dayOfYear % frases.length];
+    document.getElementById('fraseDiaria').innerText = fraseDiaria;
+}
+
+function showNextFrase() {
+    const now = new Date();
+    const start = new Date(now.getFullYear(), 0, 0);
+    const diff = now - start;
+    const oneDay = 1000 * 60 * 60 * 24;
+    const dayOfYear = Math.floor(diff / oneDay);
+
+    const nextDay = (dayOfYear + 1) % frases.length;
+    const nextFrase = frases[nextDay];
+    document.getElementById('fraseDiaria').innerText = nextFrase;
+}
+
+function toggleMusic() {
+    const audio = document.getElementById('audio');
+    if (audio.paused) {
+        audio.play();
+    } else {
+        audio.pause();
+    }
+}
+
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Mostrar cuenta regresiva
+    updateCountdown();
+
+    // Mostrar frase del día
+    showFraseDiaria();
+});
+
+function updateCountdown() {
+    const targetDate = new Date('2025-06-16T00:00:00');
+    setInterval(() => {
+        const now = new Date();
+        const timeRemaining = targetDate - now;
+
+        const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+
+        document.getElementById('time').innerText = `${days} días ${hours} horas ${minutes} minutos ${seconds} segundos`;
+    }, 1000);
+}
+
+function showFraseDiaria() {
+    const uniqueFrases = removeDuplicateFrases(frases);
+
+    const now = new Date();
+    const start = new Date(now.getFullYear(), 0, 0);
+    const diff = now - start;
+    const oneDay = 1000 * 60 * 60 * 24;
+    const dayOfYear = Math.floor(diff / oneDay);
+
+    const fraseDiaria = uniqueFrases[dayOfYear % uniqueFrases.length];
+    document.getElementById('fraseDiaria').innerText = fraseDiaria;
+}
+
+function removeDuplicateFrases(frases) {
+    return frases.filter((frase, index) => frases.indexOf(frase) === index);
+}
+
+function showNextFrase() {
+    const uniqueFrases = removeDuplicateFrases(frases);
+
+    const now = new Date();
+    const start = new Date(now.getFullYear(), 0, 0);
+    const diff = now - start;
+    const oneDay = 1000 * 60 * 60 * 24;
+    const dayOfYear = Math.floor(diff / oneDay);
+
+    const nextDay = (dayOfYear + 1) % uniqueFrases.length;
+    const nextFrase = uniqueFrases[nextDay];
+    document.getElementById('fraseDiaria').innerText = nextFrase;
+}
+
+function toggleMusic() {
+    const audio = document.getElementById('audio');
+    if (audio.paused) {
+        audio.play();
+    } else {
+        audio.pause();
+    }
+}

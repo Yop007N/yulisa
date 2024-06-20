@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>¡Feliz Cumpleaños, Aylén Yulisa Villalba Wessely!</title>
+    <title>Próximo Cumpleaños de Aylén</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
@@ -11,9 +11,10 @@
 <body>
     <div class="book">
         <div class="page active" id="page1">
-            <h1 class="display-4">¡Feliz Cumpleaños, Aylén!</h1>
-            <p class="lead">Hoy celebramos a una personita increíble que irradia luz y positividad. ¡Feliz 20 años!</p>
+            <h1 class="display-4" id="birthdayMessage"></h1>
+            <p class="lead" id="birthdayInfo"></p>
             <div id="countdown"></div>
+            <p id="fraseDiaria"></p>
         </div>
         <div class="page" id="page2">
             <p class="mt-3">Querida Aylén, en tu día especial quiero desearte todo lo mejor. Eres una persona maravillosa y una artista talentosa.<br> ¡Que todos tus sueños se hagan realidad!</p>
@@ -57,6 +58,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="js/frases.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>
