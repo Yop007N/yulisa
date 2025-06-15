@@ -1,37 +1,40 @@
-function removeDuplicateFrases(frases) {
-    return frases.filter((frase, index) => frases.indexOf(frase) === index);
-}
+// Funciones modificadas para lanzar menos confeti
 
 function lanzarConfeti() {
-    const duration = 5 * 1000;
+    const duration = 4 * 1000; // Aumentado de 3s a 4s
     const animationEnd = Date.now() + duration;
-    const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
-
+    const defaults = { 
+        startVelocity: 25, // Aumentado de 20 a 25
+        spread: 240, // Aumentado de 180 a 240
+        ticks: 50, // Aumentado de 40 a 50
+        zIndex: 0 
+    };
+    
     function randomInRange(min, max) {
         return Math.random() * (max - min) + min;
     }
-
+    
     const interval = setInterval(function() {
         const timeLeft = animationEnd - Date.now();
-
+        
         if (timeLeft <= 0) {
             return clearInterval(interval);
         }
-
-        const particleCount = 200 * (timeLeft / duration);
+        
+        const particleCount = 70 * (timeLeft / duration); // Aumentado de 30 a 70
         confetti(Object.assign({}, defaults, {
             particleCount,
-            origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 },
+            origin: { x: randomInRange(0.2, 0.3), y: Math.random() - 0.2 },
             shapes: ['circle', 'square'],
-            scalar: randomInRange(0.4, 1.2)
+            scalar: randomInRange(0.4, 1.0)
         }));
         confetti(Object.assign({}, defaults, {
             particleCount,
-            origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 },
+            origin: { x: randomInRange(0.7, 0.8), y: Math.random() - 0.2 },
             shapes: ['circle', 'square'],
-            scalar: randomInRange(0.4, 1.2)
+            scalar: randomInRange(0.4, 1.0)
         }));
-    }, 250);
+    }, 400); // Reducido de 500ms a 400ms (más frecuente)
 }
 
 function countdown(targetDate, elementId) {
@@ -49,4 +52,8 @@ function countdown(targetDate, elementId) {
 
     updateCountdown();
     setInterval(updateCountdown, 1000);
+}
+
+function removeDuplicateFrases(frases) {
+    return frases.filter((frase, index) => frases.indexOf(frase) === index);
 }

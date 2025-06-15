@@ -1,143 +1,300 @@
+/* Reset CSS para normalizar comportamiento entre navegadores */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Animaciones con prefijos para todos los navegadores */
+@-webkit-keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
 }
 
-@keyframes float {
-    0% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-    100% { transform: translateY(0); }
+@-webkit-keyframes float {
+    0% { -webkit-transform: translateY(0); transform: translateY(0); }
+    50% { -webkit-transform: translateY(-10px); transform: translateY(-10px); }
+    100% { -webkit-transform: translateY(0); transform: translateY(0); }
 }
 
+@keyframes float {
+    0% { -webkit-transform: translateY(0); transform: translateY(0); }
+    50% { -webkit-transform: translateY(-10px); transform: translateY(-10px); }
+    100% { -webkit-transform: translateY(0); transform: translateY(0); }
+}
+
+/* Estilos base del cuerpo */
 body {
     font-family: 'Dancing Script', cursive;
     color: #000;
     text-align: center;
-    padding: 20px;
-    background: url('../assets/images/img.jpg') no-repeat center center fixed;
-    background-size: cover;
-    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    background-color: #f8d7da;
+    overflow: hidden; /* Evitar scroll */
+    height: 100vh; /* Altura fija al viewport */
+    position: relative;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
+
+/* Método compatible para la imagen de fondo */
+body:before {
+    content: "";
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: url('../assets/images/img.jpg');
+    background-position: center center;
+    background-size: contain; /* Mostrar imagen completa */
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    z-index: -10;
+}
+
+/* Contenedor principal */
 .book {
     width: 90%;
-    max-width: 1000px;
+    max-width: 900px;
     height: auto;
-    margin: 50px auto;
+    margin: 0 auto;
     position: relative;
+    padding-top: 200px; /* Posicionamiento vertical */
 }
+
+/* Páginas con posicionamiento mejorado */
 .page {
-    width: 100%;
-    padding: 20px;
-    background-color: rgba(255, 255, 255, 0.9);
-    border-radius: 10px;
+    width: 90%;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.85);
+    border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 160px;
     opacity: 0;
+    -webkit-transition: opacity 1s, -webkit-transform 1s;
     transition: opacity 1s, transform 1s;
+    -webkit-transform: translateX(100%);
     transform: translateX(100%);
+    min-height: 55vh;
+    max-height: 70%;
+    overflow: auto;
 }
+
 .page.active {
     opacity: 1;
+    -webkit-transform: translateX(0);
     transform: translateX(0);
 }
+
+/* Textos con animaciones compatibles */
 .page h1, .page p {
-    margin: 20px 0;
+    margin: 8px 0;
+    -webkit-animation: fadeIn 5s ease-in-out, float 6s ease-in-out infinite;
     animation: fadeIn 5s ease-in-out, float 6s ease-in-out infinite;
-    font-size: 1.5em;
+    font-size: 1.4em;
+    line-height: 1.4;
 }
+
 .page h1 {
     color: #ff1500;
+    -webkit-animation: fadeIn 3s ease-in-out, float 6s ease-in-out infinite;
     animation: fadeIn 3s ease-in-out, float 6s ease-in-out infinite;
-    font-size: 2.5em;
+    font-size: 2.2em;
 }
-#countdown {
-    font-size: 1.5em;
-    margin-top: 20px;
-    animation: fadeIn 3s ease-in-out;
-}
+
+/* Botones con posicionamiento fijo */
 .fixed-buttons {
     position: fixed;
-    bottom: 70px; /* Ajuste la distancia desde el borde inferior */
+    bottom: 80px;
     left: 50%;
+    -webkit-transform: translateX(-50%);
     transform: translateX(-50%);
+    display: -webkit-flex;
     display: flex;
+    -webkit-justify-content: center;
     justify-content: center;
     gap: 10px;
     z-index: 1000;
 }
-.next-button, .play-button {
+
+.next-button {
     background-color: #ff6f61;
     border-color: #ff6f61;
-    font-size: 1.2em;
+    font-size: 1.1em;
+    padding: 5px 15px;
+    cursor: pointer;
 }
-.next-button:hover, .play-button:hover {
+
+.next-button:hover {
     background-color: #ff3b2e;
     border-color: #ff3b2e;
 }
-#game {
+
+/* Estilos para el piano con flexbox compatible */
+.piano-container {
+    margin: 15px auto;
+    text-align: center;
+    max-width: 600px;
+    display: -webkit-flex;
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-top: 20px;
-}
-.game-card {
-    width: 100px;
-    height: 100px;
-    margin: 10px;
-    font-size: 1em;
-    display: flex;
-    justify-content: center;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    -webkit-align-items: center;
     align-items: center;
-    background-color: #ff6f61;
-    border: 2px solid #ff3b2e;
-    border-radius: 10px;
-    cursor: pointer;
-}
-.game-card.flipped {
-    background-color: #fff;
-    color: #ff3b2e;
-    cursor: default;
 }
 
-/* Estilos responsivos */
+.piano {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: center;
+    justify-content: center;
+    position: relative;
+    margin: 15px auto;
+}
+
+.piano-key {
+    display: inline-block;
+    width: 40px;
+    height: 150px;
+    background-color: white;
+    margin: 0 2px;
+    border: 1px solid #ddd;
+    border-radius: 0 0 5px 5px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.piano-key.black {
+    background-color: black;
+    height: 100px;
+    width: 30px;
+    margin-left: -15px;
+    margin-right: -15px;
+    z-index: 2;
+    position: relative;
+}
+
+.notes-animation {
+    position: absolute;
+    font-size: 2em;
+    opacity: 0;
+    -webkit-animation: float 3s ease-out forwards;
+    animation: float 3s ease-out forwards;
+    z-index: 10;
+}
+
+.piano-title {
+    font-size: 1.8em;
+    color: #ff1500;
+    margin-bottom: 15px;
+}
+
+/* Estilos responsivos mejorados */
 @media (max-width: 768px) {
+    body:before {
+        background-size: contain;
+    }
+    
+    .page {
+        width: 90%;
+        top: 170px;
+    }
+    
+    .book {
+        width: 95%;
+        padding-top: 170px;
+    }
+    
     .page h1, .page p {
         font-size: 1.2em;
+        margin: 6px 0;
+        line-height: 1.3;
     }
+    
     .page h1 {
-        font-size: 2em;
+        font-size: 1.8em;
     }
-    #countdown {
-        font-size: 1.2em;
+    
+    .next-button {
+        font-size: 0.9em;
     }
-    .next-button, .play-button {
-        font-size: 1em;
+    
+    .piano-container {
+        max-width: 95%;
+        margin: 10px auto;
     }
-    .game-card {
-        width: 80px;
-        height: 80px;
-        font-size: 0.8em;
+    
+    .piano {
+        -webkit-transform: scale(0.8);
+        transform: scale(0.8);
+        -webkit-transform-origin: center top;
+        transform-origin: center top;
     }
 }
 
 @media (max-width: 480px) {
+    .page {
+        width: 90%;
+        top: 140px;
+        left: 5%;
+        min-height: 45vh;
+        padding: 10px;
+    }
+    
+    .book {
+        width: 100%;
+        padding-top: 140px;
+    }
+    
     .page h1, .page p {
         font-size: 1em;
+        margin: 5px 0;
+        line-height: 1.2;
     }
+    
     .page h1 {
         font-size: 1.5em;
     }
-    #countdown {
-        font-size: 1em;
+    
+    .fixed-buttons {
+        bottom: 50px;
     }
-    .next-button, .play-button {
+    
+    .next-button {
         font-size: 0.8em;
+        padding: 4px 12px;
     }
-    .game-card {
-        width: 60px;
-        height: 60px;
-        font-size: 0.6em;
+    
+    .piano-container {
+        max-width: 100%;
+        margin: 8px auto;
+    }
+    
+    .piano {
+        -webkit-transform: scale(0.65);
+        transform: scale(0.65);
+        -webkit-transform-origin: center top;
+        transform-origin: center top;
+    }
+    
+    .piano-title {
+        font-size: 1.5em;
+        margin-bottom: 10px;
     }
 }
